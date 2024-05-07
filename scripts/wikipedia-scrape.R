@@ -29,7 +29,10 @@ wiki_artists <- wiki_artists %>%
     "dateofbirth" = "Lebensdaten",
     "origin" = "Herkunft"
   ) %>%
-  mutate_all(na_if, "")
+  mutate_all(na_if, "") %>%
+  mutate(
+    "yearofbirth" = str_sub(dateofbirth, start = -4, end = -1)
+  )
 
 save(
   wiki_artists,
